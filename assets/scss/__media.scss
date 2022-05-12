@@ -267,6 +267,10 @@ $darkGray: #2f2f2f;
       text-align: center;
     }
 
+    .login__container{
+      width: 75%;
+    }
+
   }
   
   @media (max-width: 426px) {
@@ -495,6 +499,14 @@ $darkGray: #2f2f2f;
       text-align: center;
     }
 
+    .login__container{
+      border-radius: 12px;
+    }
+
+    .login__img{
+      display: none;
+    }
+
 
   }
   
@@ -519,10 +531,13 @@ $darkGray: #2f2f2f;
     .card__description {
       font-size: 14px;
     }
-  }
-
-  .message__container{
-    height: 60%;
+    .message__container{
+      height: 60%;
+    }
+  
+    .login__container{
+      width: 95%;
+    }
   }
 
 }
