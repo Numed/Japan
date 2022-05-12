@@ -1,0 +1,74 @@
+@mixin login {
+  .login__container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    background-color: $darkGray;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .login__img {
+  }
+
+  .login__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .login__form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    label{
+      color: $raspberry;
+    }
+
+    input{
+      border: 1px solid $darkGray;
+      background-color: $nude;
+      margin: 0 0 15px;
+      color: $darkGray;
+      font-size: 16px;
+      letter-spacing: 1.2px;
+    }
+
+  }
+
+  .btn__login{
+    border-radius: 20px;
+    text-align: center;
+    background-color: $nude;
+    padding: 6px 20px;
+    color: $raspberry;
+    cursor: pointer;
+  }
+
+  .registration__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .reg__title {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: $nude;
+  }
+
+  .btn__reg {
+    margin: 0 auto;
+    color: $raspberry;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+  }
+
+}
