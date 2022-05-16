@@ -14,6 +14,7 @@ const btnCart = document.querySelector(".btn__icon"),
   btnScroll = document.querySelector(".btn__scroll"),
   btnsAdd = document.querySelectorAll(".btn__add"),
   btnSubmit = document.querySelector(".btn__submit"),
+  btnReg = document.querySelector(".btn__reg"),
   btnsBuy = document.querySelectorAll(".btn__buy"),
   btnsView = document.querySelectorAll(".btn__view"),
   btnClose = document.querySelector(".btn__close"),
@@ -31,9 +32,13 @@ const selectContainer = document.querySelector(".select__container"),
   cardsContainer = document.querySelectorAll(".card"),
   cards = document.querySelectorAll(".card"),
   filterMenu = document.querySelector(".filter"),
+  loginSection = document.querySelector(".login__inner"),
+  priceContainer = document.querySelector(".price__container"),
+  regSection = document.querySelector(".reg__inner"),
   ratingValues = document.querySelectorAll(".rating__value");
 
 let priceGap = 100,
+  priceInner = document.querySelector(".total__price span"),
   counters = document.querySelectorAll(".counter");
 
 let MasCard = [],
@@ -76,18 +81,16 @@ window.onload = function () {
   };
 };
 
-for (let btnAdd of btnsAdd) {
-  btnAdd.addEventListener("click", addToCart);
-}
-
-for (let btnBuy of btnsBuy) {
-  btnBuy.addEventListener("click", addToCart);
-}
+window.onload = function () {
+  btnReg.onclick = function () {
+    loginSection.style.display = "none";
+    regSection.classList.add("show");
+  };
+};
 
 for (let index = 0; index < btnsView.length; index++) {
   const btnView = btnsView[index];
   btnView.onclick = function () {
-    console.log(btnView);
     popup.classList.add("show");
   };
 }
@@ -321,63 +324,88 @@ rangeInput.forEach((input) => {
 
 itemList.addEventListener("click", deleteItem);
 
+let numberForProducts = 0;
+
 function deleteItem(e) {
   let target = e.target;
   if (target.className === "btn__delete") {
     if (target.classList.contains("btn__delete")) {
       const item = target.parentElement;
       item.remove();
-    }
-  }
-
-  for (let index = 0; index < counters.length; index++) {
-    const counter = counters[index];
-    if (counter.textContent > 0) {
-      counter.textContent--;
-    } else if (counter.textContent <= 0) {
-      counter.textContent = 0;
-      titleEmpty.style.display = "block";
-      btnCheckout.style.display = "none";
-    } else if (counter.textContent == "9+") {
-      let count = counter.textContent.replace("+", "");
-      counter.textContent = +count;
-    } else {
-      btnCheckout.style.display = "none";
-      titleEmpty.style.display = "block";
+      numberForProducts--;
+      if (numberForProducts < 9) {
+        counters[0].textContent--;
+        counters[1].textContent--;
+      }
+      if (numberForProducts === 0) {
+        btnCheckout.style.display = "none";
+        titleEmpty.style.display = "block";
+        priceContainer.style.display = "none";
+      }
+      if (numberForProducts === 9) {
+        let count = counters[1].textContent.replace("+", "");
+        counters[1].textContent = count;
+        counters[0].textContent = count;
+      }
     }
   }
 }
 
-function addToCart() {
-  for (let index = 0; index < counters.length; index++) {
-    const counter = counters[index];
+for (let index = 0; index < cards.length; index++) {
+  const card = cards[index];
+  let btn = card.querySelector(".btn__add");
+  btn.addEventListener("click", function () {
+    let btnDelete = document.createElement("a"),
+      cardSrc = card.querySelector(".card__img img").src,
+      cardAlt = card.querySelector(".card__img img").alt,
+      cardTitle = card.querySelector(".card__title").textContent,
+      cardPrice = card.querySelector(".card__price").textContent,
+      item = document.createElement("li"),
+      icon = document.createElement("i"),
+      itemTitle = document.createElement("a"),
+      itemImg = document.createElement("img"),
+      totalPrice = 0,
+      priceCount = +cardPrice.replace("$", "");
 
-    if (counter.textContent >= 9) {
-      counter.textContent = 9 + "+";
-    } else if (counter.textContent == "9+") {
-      return;
+    if (document.querySelectorAll(".inner__item").length > 0) {
+      XZ();
+      priceInner.textContent = totalPrice + "$";
+      console.log(priceInner.textContent);
     } else {
-      counter.textContent++;
+      priceInner.textContent = priceCount + "$";
     }
-  }
 
-  titleEmpty.style.display = "none";
-  btnCheckout.style.display = "block";
-  let btnDelete = document.createElement("a"),
-    item = document.createElement("li"),
-    icon = document.createElement("i"),
-    itemTitle = document.createElement("a"),
-    itemImg = document.createElement("img");
-  itemImg.src = "assets/img/items/Tea.png";
-  itemImg.alt = "Tea";
-  itemTitle.textContent = "Tea";
-  btnDelete.classList.add("btn__delete");
-  icon.classList.add("fas", "fa-times");
-  item.classList.add("inner__item");
-  itemTitle.classList.add("item__title");
-  btnDelete.append(icon);
-  item.append(itemImg, itemTitle, btnDelete);
-  itemList.append(item);
+    function XZ() {
+      totalPrice += priceCount;
+      return totalPrice;
+    }
+
+    itemImg.src = cardSrc;
+    itemImg.alt = cardAlt;
+    itemTitle.textContent = cardTitle;
+
+    btnDelete.classList.add("btn__delete");
+    icon.classList.add("fas", "fa-times");
+    item.classList.add("inner__item");
+    itemTitle.classList.add("item__title");
+    btnDelete.append(icon);
+    item.append(itemImg, itemTitle, btnDelete);
+    itemList.append(item);
+
+    if (numberForProducts >= 9) {
+      counters[0].textContent = 9 + "+";
+      counters[1].textContent = 9 + "+";
+      numberForProducts++;
+    } else {
+      counters[0].textContent++;
+      counters[1].textContent++;
+      numberForProducts++;
+    }
+
+    titleEmpty.style.display = "none";
+    btnCheckout.style.display = "block";
+    priceContainer.style.display = "flex";
+  });
 }
 
 function scrollItem() {
