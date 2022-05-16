@@ -269,6 +269,12 @@ $darkGray: #2f2f2f;
 
     .login__container{
       width: 75%;
+      min-height: 0;
+      border-radius: 12px;
+    }
+
+    .login__img{
+      display: none;
     }
 
   }

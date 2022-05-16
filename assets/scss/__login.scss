@@ -1,16 +1,32 @@
 @mixin login {
-  .login__container {
+
+  .login{
+    padding-top: 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 100%;
-    background-color: $darkGray;
-    padding: 20px;
-    margin: 0 auto;
   }
 
-  .login__img {
+  .login__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    min-height: 500px;
+    background-color: $darkGray;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 0px 5px 15px 4px rgba(34,34,34,0.5);
+  }
+
+  .login__title,
+  .reg__title{
+    color: $raspberry;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    line-height: 28px;
+    font-size: 28px;
+    margin-bottom: 25px;
   }
 
   .login__inner {
@@ -20,28 +36,46 @@
     flex-direction: column;
   }
 
-  .login__form{
+  .login__img{
+    display: flex;
+  }
+
+
+  .login__form,
+  .reg__form{
     display: flex;
     justify-content: center;
     flex-direction: column;
 
     label{
       color: $raspberry;
+      margin-bottom: 5px;
     }
 
-    input{
+    input[type="email"],
+    input[type="password"],
+    input[type="text"]{
       border: 1px solid $darkGray;
       background-color: $nude;
       margin: 0 0 15px;
       color: $darkGray;
+      outline: none;
       font-size: 16px;
       letter-spacing: 1.2px;
+
+      &:focus{
+        border: 2px solid $raspberry;
+      }
     }
 
   }
 
-  .btn__login{
+  .btn__login,
+  .btn__signup{
+    width: 50%;
+    margin: 0 auto;
     border-radius: 20px;
+    font-size: 16px;
     text-align: center;
     background-color: $nude;
     padding: 6px 20px;
@@ -52,11 +86,11 @@
   .registration__container {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
-  .reg__title {
-    font-size: 15px;
+  .reg__suptitle {
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: 1.2px;
     color: $nude;
@@ -65,10 +99,43 @@
   .btn__reg {
     margin: 0 auto;
     color: $raspberry;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 1.2px;
     cursor: pointer;
+  }
+
+  .reg__inner{
+  display: none;
+  }
+
+  .reg__inner.show{
+    display: block;
+  }
+
+  .reg__title{
+    text-align: center;
+  }
+
+  .main__info{
+    display: flex;
+
+    input{
+      width: 85%;
+    }
+
+  }
+
+  .another__info{
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+  }
+
+  .first__name,
+  .second__name{
+    display: flex;
+    flex-direction: column;
   }
 
 }

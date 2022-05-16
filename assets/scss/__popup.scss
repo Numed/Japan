@@ -19,6 +19,7 @@
   .navbar .nav__title {
     font-size: 18px;
     color: $nude;
+    letter-spacing: 1.2px;
   }
   
   .section__nav .navbar i {
@@ -143,9 +144,10 @@
     img {
       width: 60%;
       height: 20%;
+      filter: invert(8%) sepia(7%) saturate(21%) hue-rotate(334deg) brightness(101%) contrast(88%);
   
       &:hover {
-        filter: invert(1);
+        filter: invert(91%) sepia(7%) saturate(237%) hue-rotate(21deg) brightness(84%) contrast(87%);
         transition: all .2s linear;
       }
     }
