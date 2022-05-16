@@ -36,25 +36,49 @@
                 </ul>
             </nav>
         </header>
-        <section>
+        <section class="login">
+            <div class="login__img">
+                <img src="assets/img/login/loginImg.jpg" alt="Login Img">
+            </div>
             <div class="login__container">
-                <div class="login__img">
-                    <img src="assets/img/header/preiw.png" alt="">
-                </div>
                 <div class="login__inner">
+                    <h2 class="login__title">Sign in</h2>
                     <form class="login__form" action="" method="post">
                         <label for="login">Login</label>
-                        <input type="text" name="" id="login">
+                        <input type="email" name="" id="login" required>
                         <label for="password">Password</label>
-                        <input type="password" name="" id="password">
+                        <input type="password" name="" id="password" required>
                         <button class="btn__login" type="submit">Log in</button>
                     </form>
                     <div class="registration__container">
-                        <h3 class="reg__title">Don't have an account?</h3>
+                        <h3 class="reg__suptitle">Don't have an account?</h3>
                         <a class="btn__reg">Create an account</a>
                     </div>
+                </div>
+                <div class="reg__inner">
+                    <h2 class="reg__title">Sing up</h2>
+                    <form class="reg__form" action="" method="post">
+                        <div class="main__info">
+                            <div class="first__name">
+                                <label for="name">First Name</label>
+                                <input type="text" name="" id="name" required>
+                            </div>
+                            <div class="second__name">
+                                <label for="surname">Second name</label>
+                                <input type="text" name="" id="surname" required>
+                            </div>
+                        </div>
+                        <div class="another__info">
+                            <label for="email">Email</label>
+                            <input type="email" name="" id="email" required>
+                            <label for="passwordReg">Password</label>
+                            <input type="password" name="" id="passwordReg" required>
+                        </div>
+                        <button class="btn__signup" type="submit">Sign up</button>
+                    </form>
                 </div>
             </div>
         </section>
         <script src="https://kit.fontawesome.com/c58ff47bab.js" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js"></script>
     </body>
