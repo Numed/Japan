@@ -53,11 +53,11 @@
     }
 
     input[type="email"],
-    input[type="password"],
-    input[type="text"]{
+    input[type="password"]{
       border: 1px solid $darkGray;
       background-color: $nude;
       margin: 0 0 15px;
+      padding: 5px;
       color: $darkGray;
       outline: none;
       font-size: 16px;

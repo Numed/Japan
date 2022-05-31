@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
-@import "__products.scss", "__popup.scss", "__checkout.scss", "__error.scss", "__contacts.scss", "__media.scss", "__login.scss";
+@import "__products.scss", "__popup.scss", "__checkout.scss", "__error.scss", "__contacts.scss", "__media.scss", 
+"__login.scss", "__admin.scss";
 
 $raspberry: #c81e45;
 $nude: #bebeb4;
@@ -376,6 +377,10 @@ header {
     }
   }
 
+  .btn__view{
+    text-decoration: none;
+  }
+
 
 }
 
@@ -548,9 +553,14 @@ header {
 
 @include login;
 
+/* Admin Page*/
+@include admin;
+
+/* Media */
+@include media;
+
 /* SCROLL */
 
-@include media;
 
 ::-webkit-scrollbar {
   width: 7px;

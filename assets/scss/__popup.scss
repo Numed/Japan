@@ -67,7 +67,7 @@
   .buy__inner {
     display: flex;
     flex-wrap: wrap;
-    width: 260px;
+    width: 370px;
   }
   
   .select__container {
@@ -78,6 +78,7 @@
     cursor: pointer;
     background-color: $raspberry;
     border: 1px solid $darkGray;
+    margin-left: 10px;
   }
   
   .card__selection {

@@ -44,7 +44,7 @@
                 <div class="login__inner">
                     <h2 class="login__title">Sign in</h2>
                     <form class="login__form" action="" method="post">
-                        <label for="login">Login</label>
+                        <label for="login">Email</label>
                         <input type="email" name="" id="login" required>
                         <label for="password">Password</label>
                         <input type="password" name="" id="password" required>
@@ -61,16 +61,18 @@
                         <div class="main__info">
                             <div class="first__name">
                                 <label for="name">First Name</label>
-                                <input type="text" name="" id="name" required>
+                                <input type="text" name="" id="name" pattern="[A-Za-z]" required>
                             </div>
                             <div class="second__name">
                                 <label for="surname">Second name</label>
-                                <input type="text" name="" id="surname" required>
+                                <input type="text" name="" id="surname" pattern="[A-Za-z]" required>
                             </div>
                         </div>
                         <div class="another__info">
-                            <label for="email">Email</label>
-                            <input type="email" name="" id="email" required>
+                            <label for="phone">Phone</label>
+                            <input type="tel" name="" id="phone" pattern="[0-9], {,6}" required>
+                            <label for="userEmail">Email</label>
+                            <input type="email" name="" id="userEmail" required>
                             <label for="passwordReg">Password</label>
                             <input type="password" name="" id="passwordReg" required>
                         </div>
@@ -80,5 +82,6 @@
             </div>
         </section>
         <script src="https://kit.fontawesome.com/c58ff47bab.js" crossorigin="anonymous"></script>
-        <script src="assets/js/script.js"></script>
+        <script src="assets/js/login.js"></script>
+        <script src="assets/js/hamburg.js"></script>
     </body>

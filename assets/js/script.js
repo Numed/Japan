@@ -8,38 +8,38 @@ const rangeInput = document.querySelectorAll(".range__input input"),
 
 const btnCart = document.querySelector(".btn__icon"),
   btnMore = document.querySelector(".btn__load-more"),
-  btnToggle = document.querySelector(".toggle__navbar"),
   btnBack = document.querySelector(".btn__back"),
   btnFilter = document.querySelector(".filter__icon"),
   btnScroll = document.querySelector(".btn__scroll"),
   btnsAdd = document.querySelectorAll(".btn__add"),
-  btnSubmit = document.querySelector(".btn__submit"),
-  btnReg = document.querySelector(".btn__reg"),
-  btnsBuy = document.querySelectorAll(".btn__buy"),
+  btnBuy = document.querySelector(".btn__buy"),
   btnsView = document.querySelectorAll(".btn__view"),
   btnClose = document.querySelector(".btn__close"),
-  btnCLoseModal = document.querySelector(".btn__close-modal"),
   btnsDelete = document.querySelectorAll(".btn__delete"),
   btnCheckout = document.querySelector(".btn__checkout"),
   titleEmpty = document.querySelector(".title__empty"),
   itemList = document.querySelector(".inner__items"),
   items = document.querySelectorAll(".inner__item"),
+  itemsTitle = document.querySelectorAll(".item__title"),
   inputSearch = document.querySelector(".input__search"),
-  msgPopup = document.querySelector(".popup__message"),
   popup = document.querySelector(".popup");
 
 const selectContainer = document.querySelector(".select__container"),
   cardsContainer = document.querySelectorAll(".card"),
   cards = document.querySelectorAll(".card"),
   filterMenu = document.querySelector(".filter"),
-  loginSection = document.querySelector(".login__inner"),
   priceContainer = document.querySelector(".price__container"),
-  regSection = document.querySelector(".reg__inner"),
+  cardContainer = document.querySelector(".card__container"),
+  mySelect = document.getElementById("mySelect"),
+  itemInner = document.querySelector(".item__inner"),
+  btnsChekbox = document.querySelectorAll(".checkbox"),
   ratingValues = document.querySelectorAll(".rating__value");
 
 let priceGap = 100,
   priceInner = document.querySelector(".total__price span"),
-  counters = document.querySelectorAll(".counter");
+  counters = document.querySelectorAll(".counter"),
+  numberForProducts = 0,
+  priceCount = 0;
 
 let MasCard = [],
   item = 0;
@@ -51,49 +51,52 @@ cards.forEach((cur) => {
 });
 
 window.onload = function () {
-  btnToggle.onclick = function ToggleOpen() {
-    const icon = document.querySelector(".toggle__navbar i");
-    btnToggle.classList.toggle("active");
-    if (btnToggle.classList.contains("active")) {
-      icon.classList.replace("fa-bars", "fa-times");
-    } else {
-      icon.classList.replace("fa-times", "fa-bars");
-    }
-  };
+  for (let index = 0; index < cards.length; index++) {
+    const card = cards[index],
+      btnCardView = card.querySelector(".btn__view");
+    btnCardView.onclick = function () {
+      let cardSrc = card.querySelector(".card__img img").src,
+        cardAlt = card.querySelector(".card__img img").alt,
+        cardTitle = card.querySelector(".card__title").textContent,
+        cardPrice = card.querySelector(".card__price").textContent;
 
-  msgPopup.addEventListener("click", function () {
-    document.body.onclick = function () {
-      if (msgPopup.classList.contains("show")) {
-        msgPopup.classList.remove("show");
-        document.body.style.overflow = "visible";
-      }
+      let popupImgSrc = cardContainer.querySelector(".card__img img"),
+        popupImgAlt = cardContainer.querySelector(".card__img img"),
+        popupTitle = cardContainer.querySelector(".card__title"),
+        popupDescrTitle = document.querySelector(".description__title"),
+        popupPrice = cardContainer.querySelector(".card__price");
+
+      popupImgSrc.src = cardSrc;
+      popupImgAlt.alt = cardAlt;
+      popupTitle.textContent = cardTitle;
+      popupDescrTitle.textContent = cardTitle;
+      popupPrice.textContent = cardPrice;
+      popup.classList.add("show");
+
+      let request = new XMLHttpRequest(),
+        lets = "popup=" + cardTitle;
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          mySelect.innerHTML = "";
+          JSON.parse(request.response)[0]
+            .selectValue.split(", ")
+            .forEach((cur) => {
+              let opt = document.createElement("option");
+              opt.value = cur;
+              opt.textContent = cur;
+              mySelect.append(opt);
+            });
+        }
+      };
+      request.open("POST", "assets/php/getOptions.php", true);
+      request.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      request.send(lets);
     };
-  });
-
-  btnSubmit.onclick = function () {
-    msgPopup.classList.add("show");
-    document.body.style.overflow = "hidden";
-  };
-
-  btnCLoseModal.onclick = function () {
-    msgPopup.classList.remove("show");
-    document.body.style.overflow = "visible";
-  };
+  }
 };
-
-window.onload = function () {
-  btnReg.onclick = function () {
-    loginSection.style.display = "none";
-    regSection.classList.add("show");
-  };
-};
-
-for (let index = 0; index < btnsView.length; index++) {
-  const btnView = btnsView[index];
-  btnView.onclick = function () {
-    popup.classList.add("show");
-  };
-}
 
 btnClose.onclick = function () {
   popup.classList.remove("show");
@@ -114,10 +117,8 @@ btnBack.onclick = function () {
     counter.style.display = "block";
   }
 };
-
 btnFilter.onclick = function () {
   btnFilter.classList.toggle("toggle");
-
   if (btnFilter.classList.contains("toggle")) {
     filterMenu.style.display = "inline-block";
   } else {
@@ -136,6 +137,43 @@ btnMore.onclick = function () {
     btnMore.style.display = "none";
   }
 };
+
+btnCheckout.onclick = function () {
+  const cartItems = {
+    title: Massive.toString(),
+    totalPrice: priceCount,
+  };
+  localStorage.setItem("items", JSON.stringify(cartItems));
+};
+
+for (let btnChekbox of btnsChekbox) {
+  const cardList = document.querySelectorAll(".card");
+  btnChekbox.onchange = function () {
+    if (btnChekbox.checked == true) {
+      const filterValue = btnChekbox.value;
+      if (filterValue != "") {
+        cardList.forEach(function (e) {
+          if (e.textContent.search(filterValue) == -1) {
+            e.classList.add("hide");
+          } else {
+            e.classList.remove("hide");
+          }
+        });
+      } else {
+        cardList.forEach(function (e) {
+          e.classList.remove("hide");
+          btnMore.style.display = "none";
+        });
+      }
+    } else {
+      cardList.forEach(function (e) {
+        e.classList.remove("hide");
+      });
+    }
+  };
+}
+
+itemList.addEventListener("click", deleteItem);
 
 inputSearch.oninput = function () {
   const cardTitle = document.querySelectorAll(".card");
@@ -322,15 +360,14 @@ rangeInput.forEach((input) => {
   });
 });
 
-itemList.addEventListener("click", deleteItem);
-
-let numberForProducts = 0;
-
 function deleteItem(e) {
   let target = e.target;
   if (target.className === "btn__delete") {
     if (target.classList.contains("btn__delete")) {
       const item = target.parentElement;
+      let cardPrice = item.querySelector("h3.price__count").textContent,
+        totalPrice = document.querySelector(".total__price span");
+
       item.remove();
       numberForProducts--;
       if (numberForProducts < 9) {
@@ -347,65 +384,70 @@ function deleteItem(e) {
         counters[1].textContent = count;
         counters[0].textContent = count;
       }
+      let count = +cardPrice.replace("$", "");
+      priceCount -= count;
+      totalPrice.textContent = priceCount + "$";
     }
   }
 }
 
+let Massive = [];
+
 for (let index = 0; index < cards.length; index++) {
   const card = cards[index];
   let btn = card.querySelector(".btn__add");
-  btn.addEventListener("click", function () {
-    let btnDelete = document.createElement("a"),
-      cardSrc = card.querySelector(".card__img img").src,
-      cardAlt = card.querySelector(".card__img img").alt,
-      cardTitle = card.querySelector(".card__title").textContent,
-      cardPrice = card.querySelector(".card__price").textContent,
-      item = document.createElement("li"),
-      icon = document.createElement("i"),
-      itemTitle = document.createElement("a"),
-      itemImg = document.createElement("img"),
-      totalPrice = 0,
-      priceCount = +cardPrice.replace("$", "");
-
-    if (document.querySelectorAll(".inner__item").length > 0) {
-      XZ();
-      priceInner.textContent = totalPrice + "$";
-      console.log(priceInner.textContent);
-    } else {
-      priceInner.textContent = priceCount + "$";
-    }
-
-    function XZ() {
-      totalPrice += priceCount;
-      return totalPrice;
-    }
-
-    itemImg.src = cardSrc;
-    itemImg.alt = cardAlt;
-    itemTitle.textContent = cardTitle;
-
-    btnDelete.classList.add("btn__delete");
-    icon.classList.add("fas", "fa-times");
-    item.classList.add("inner__item");
-    itemTitle.classList.add("item__title");
-    btnDelete.append(icon);
-    item.append(itemImg, itemTitle, btnDelete);
-    itemList.append(item);
-
-    if (numberForProducts >= 9) {
-      counters[0].textContent = 9 + "+";
-      counters[1].textContent = 9 + "+";
-      numberForProducts++;
-    } else {
-      counters[0].textContent++;
-      counters[1].textContent++;
-      numberForProducts++;
-    }
-
-    titleEmpty.style.display = "none";
-    btnCheckout.style.display = "block";
-    priceContainer.style.display = "flex";
+  btn.addEventListener("click", () => {
+    addCart(card);
   });
+}
+
+btnBuy.addEventListener("click", () => {
+  addCart(cardContainer);
+});
+
+function addCart(card) {
+  let btnDelete = document.createElement("a"),
+    cardSrc = card.querySelector(".card__img img").src,
+    cardAlt = card.querySelector(".card__img img").alt,
+    cardTitle = card.querySelector(".card__title").textContent,
+    cardPrice = card.querySelector(".card__price").textContent,
+    priceNumber = document.createElement("h3"),
+    item = document.createElement("li"),
+    icon = document.createElement("i"),
+    itemTitle = document.createElement("a"),
+    itemImg = document.createElement("img");
+  priceCount += +cardPrice.replace("$", "");
+  priceInner.textContent = priceCount + "$";
+
+  itemImg.src = cardSrc;
+  itemImg.alt = cardAlt;
+  itemTitle.textContent = cardTitle;
+  priceNumber.classList.add("price__count");
+  priceNumber.textContent = cardPrice;
+
+  Massive.push(cardTitle);
+
+  btnDelete.classList.add("btn__delete");
+  icon.classList.add("fas", "fa-times");
+  item.classList.add("inner__item");
+  itemTitle.classList.add("item__title");
+  btnDelete.append(icon);
+  item.append(itemImg, itemTitle, priceNumber, btnDelete);
+  itemList.append(item);
+
+  if (numberForProducts >= 9) {
+    counters[0].textContent = 9 + "+";
+    counters[1].textContent = 9 + "+";
+    numberForProducts++;
+  } else {
+    counters[0].textContent++;
+    counters[1].textContent++;
+    numberForProducts++;
+  }
+
+  titleEmpty.style.display = "none";
+  btnCheckout.style.display = "block";
+  priceContainer.style.display = "flex";
 }
 
 function scrollItem() {

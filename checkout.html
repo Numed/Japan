@@ -38,27 +38,28 @@
         </header>
         <section>
             <div class="section__container">
+                <h3 class="total__price">Total price: <output name="total"></output></h3>
                 <h2 class="section__chapter">Personal details</h2>
                 <div class="personal__info">
                     <div class="name__section">
                         <label for="name">Name <span>*</span></label>
-                        <input type="text" name="" id="name">
+                        <input type="text" name="" id="name" pattern="[A-Za-z]">
                         <label for="surname">Surname <span>*</span></label>
-                        <input type="text" name="" id="surname">
+                        <input type="text" name="" id="surname" pattern="[A-Za-z]">
                     </div>
                     <div class="contact__section">
                         <label for="phone">Phone number <span>*</span></label>
-                        <input type="tel" name="" id="phone">
-                        <label for="email">Email</label>
-                        <input type="email" name="" id="email">
+                        <input type="tel" name="" id="phone" pattern="[0-9], {,10}">
+                        <label for="items">Items</label>
+                        <input type="text" name="" id="items" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]">
                     </div>
                 </div>
                 <h2 class="section__chapter">Delivery details</h2>
                 <div class="delivery__info">
                     <div class="delivery__container">
-                        <h2 class="delivery__title ">Address</h2>
+                        <h2 class="delivery__title">Address</h2>
                         <label for="city">City</label>
-                        <input type="text" id="city">
+                        <input type="text" id="city" pattern="[A-Za-z]">
                         <label for="select">Nova poshta departments</label>
                         <select name="" id="select">
                             <option value="1">Nova poshta department №1</option>
@@ -69,14 +70,14 @@
                     <div class="payment__container">
                         <h2 class="payment__title">Payment</h2>
                         <div class="method__inner">
-                            <input type="radio" name="radio__btn" id="" checked><span>Payment by upon receipt</span>
+                            <input type="radio" name="radio__btn" checked><span>Payment by upon receipt</span>
                         </div>
                         <div class="method__inner">
-                            <input type="radio" name="radio__btn" id=""><span>Payment by credit card (Visa/Master
+                            <input type="radio" name="radio__btn"><span>Payment by credit card (Visa/Master
                                 Card)</span>
                         </div>
                         <div class="method__inner">
-                            <input type="radio" name="radio__btn" id=""><span>Payment by parts</span>
+                            <input type="radio" name="radio__btn"><span>Payment by parts</span>
                         </div>
                     </div>
                 </div>
@@ -97,5 +98,6 @@
         </div>
 
         <script src="https://kit.fontawesome.com/c58ff47bab.js" crossorigin="anonymous"></script>
-        <script src="assets/js/script.js"></script>
+        <script src="assets/js/checkout.js"></script>
+        <script src="assets/js/hamburg.js"></script>
     </body>

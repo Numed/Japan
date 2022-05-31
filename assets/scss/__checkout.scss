@@ -38,6 +38,9 @@
         color: $raspberry;
       }
     }
+    .total__price {
+      color: $nude;
+    }
   }
   
   .name__section, .contact__section {
@@ -80,6 +83,7 @@
   .delivery__container {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   
   .delivery__info select {
@@ -89,6 +93,18 @@
     color: $nude;
     text-align: center;
     background: $darkGray;
+    max-width: 300px;
+    outline: none;
+  }
+
+  .autocomplete-items{
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    padding: 5px;
+    background-color: $nude;
+    max-height: 150px;
+    overflow-y: scroll;
   }
   
   .payment__container {
