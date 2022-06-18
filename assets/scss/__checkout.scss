@@ -57,11 +57,31 @@
     background-color: #3f3f3f;
     border-radius: 5px;
     outline: none;
+
+    &.shake,
+    &.shake ~ label {
+      animation: shake .3s linear;
+    }
   }
   
   .name__section input:focus, .contact__section input:focus {
     border: 2px solid $raspberry;
     transition: border .2s linear;
+  }
+
+  @keyframes shake {
+  
+    0%, 100%{
+      margin-left: 0;
+    }
+
+    20%, 80%{
+      margin-left: -12px;
+    }
+
+    40%, 60%{
+      margin-left: 12px;
+    }    
   }
   
   .personal__info {

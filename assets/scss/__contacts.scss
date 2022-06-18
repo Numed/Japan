@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: center;
   
-    input, textarea{
+    input, textarea, input[type="email"]{
       margin-bottom: 15px;
       letter-spacing: 1.2px;
       color: $nude;
