@@ -17,6 +17,7 @@ const btnCart = document.querySelector(".btn__icon"),
   btnClose = document.querySelector(".btn__close"),
   btnsDelete = document.querySelectorAll(".btn__delete"),
   btnCheckout = document.querySelector(".btn__checkout"),
+  btnsCheckbox = document.querySelectorAll(".checkbox"),
   titleEmpty = document.querySelector(".title__empty"),
   itemList = document.querySelector(".inner__items"),
   items = document.querySelectorAll(".inner__item"),
@@ -30,9 +31,7 @@ const selectContainer = document.querySelector(".select__container"),
   filterMenu = document.querySelector(".filter"),
   priceContainer = document.querySelector(".price__container"),
   cardContainer = document.querySelector(".card__container"),
-  mySelect = document.getElementById("mySelect"),
-  itemInner = document.querySelector(".item__inner"),
-  btnsChekbox = document.querySelectorAll(".checkbox"),
+  cardDescription = document.querySelector(".card__description"),
   ratingValues = document.querySelectorAll(".rating__value");
 
 let priceGap = 100,
@@ -42,10 +41,16 @@ let priceGap = 100,
   priceCount = 0;
 
 let MasCard = [],
+  Massive = [],
+  selection = [],
+  arr = [],
+  selectedValue,
+  iteration = 0,
   item = 0;
 cards.forEach((cur) => {
   if (item > 3) {
     MasCard.push(cur);
+    cur.style.display = "none";
   }
   item++;
 });
@@ -88,12 +93,27 @@ window.onload = function () {
             });
         }
       };
-      request.open("POST", "assets/php/getOptions.php", true);
+      request.open("POST", "assets/php/popup/getOptions.php", true);
       request.setRequestHeader(
         "Content-type",
         "application/x-www-form-urlencoded"
       );
       request.send(lets);
+
+      let xhttp = new XMLHttpRequest(),
+        descr = "desc=" + cardTitle;
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+          let description = JSON.parse(xhttp.response)[0].description;
+          cardDescription.textContent = description;
+        }
+      };
+      xhttp.open("POST", "assets/php/popup/getDescription.php", true);
+      xhttp.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      xhttp.send(descr);
     };
   }
 };
@@ -138,49 +158,34 @@ btnMore.onclick = function () {
   }
 };
 
-btnCheckout.onclick = function () {
-  const cartItems = {
-    title: Massive.toString(),
-    totalPrice: priceCount,
-  };
-  localStorage.setItem("items", JSON.stringify(cartItems));
-};
+itemList.addEventListener("click", deleteItem);
 
-for (let btnChekbox of btnsChekbox) {
-  const cardList = document.querySelectorAll(".card");
-  btnChekbox.onchange = function () {
-    if (btnChekbox.checked == true) {
-      const filterValue = btnChekbox.value;
-      if (filterValue != "") {
-        cardList.forEach(function (e) {
-          if (e.textContent.search(filterValue) == -1) {
-            e.classList.add("hide");
-          } else {
-            e.classList.remove("hide");
-          }
-        });
-      } else {
-        cardList.forEach(function (e) {
+for (let btnCheckbox of btnsCheckbox) {
+  let checkBox = btnCheckbox.value;
+  btnCheckbox.onchange = function () {
+    if (btnCheckbox.checked) {
+      cardsContainer.forEach(function (e) {
+        if (e.textContent.search(checkBox) == -1) {
+          e.classList.add("hide");
+        } else {
           e.classList.remove("hide");
-          btnMore.style.display = "none";
-        });
-      }
+        }
+      });
     } else {
-      cardList.forEach(function (e) {
+      cardsContainer.forEach(function (e) {
         e.classList.remove("hide");
+        btnMore.style.display = "none";
       });
     }
   };
 }
 
-itemList.addEventListener("click", deleteItem);
-
 inputSearch.oninput = function () {
   const cardTitle = document.querySelectorAll(".card");
-  let searchData = inputSearch.value.trim();
+  let searchData = inputSearch.value.trim().toLowerCase();
   if (searchData != "") {
     cardTitle.forEach(function (e) {
-      if (e.textContent.search(searchData) == -1) {
+      if (e.textContent.toLowerCase().search(searchData) == -1) {
         e.classList.add("hide");
       } else {
         e.classList.remove("hide");
@@ -298,7 +303,6 @@ priceInput.forEach((input) => {
   input.addEventListener("input", (e) => {
     let minPrice = parseInt(priceInput[0].value),
       maxPrice = parseInt(priceInput[1].value);
-
     if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
       if (e.target.className === "input__min") {
         rangeInput[0].value = minPrice;
@@ -351,7 +355,10 @@ rangeInput.forEach((input) => {
     });
     for (let i = 0; i < massCard.length; i++) {
       let cardPrice = +massCard[i].price.textContent.replace("$", "");
-      if (cardPrice <= maxVal && cardPrice >= minVal) {
+      if (
+        cardPrice <= priceInput[1].value &&
+        cardPrice >= priceInput[0].value
+      ) {
         massCard[i].el.style.display = "flex";
       } else {
         massCard[i].el.style.display = "none";
@@ -366,8 +373,8 @@ function deleteItem(e) {
     if (target.classList.contains("btn__delete")) {
       const item = target.parentElement;
       let cardPrice = item.querySelector("h3.price__count").textContent,
+        cardTitle = item.querySelector(".item__title").textContent,
         totalPrice = document.querySelector(".total__price span");
-
       item.remove();
       numberForProducts--;
       if (numberForProducts < 9) {
@@ -386,12 +393,28 @@ function deleteItem(e) {
       }
       let count = +cardPrice.replace("$", "");
       priceCount -= count;
+
+      let itemsCart = JSON.parse(localStorage.getItem("items")),
+        itemsTitle = itemsCart.title,
+        itemsPrice = itemsCart.totalPrice;
+      itemsPrice -= count;
+      priceCount = itemsPrice;
       totalPrice.textContent = priceCount + "$";
+
+      let titleIndex = itemsTitle.indexOf(cardTitle);
+
+      arr.splice(titleIndex, 1);
+      arr.join(",");
+
+      const cartItems = {
+        title: arr.map((field) => field.title + " " + field.option).toString(),
+        totalPrice: priceCount,
+      };
+
+      localStorage.setItem("items", JSON.stringify(cartItems));
     }
   }
 }
-
-let Massive = [];
 
 for (let index = 0; index < cards.length; index++) {
   const card = cards[index];
@@ -426,6 +449,28 @@ function addCart(card) {
   priceNumber.textContent = cardPrice;
 
   Massive.push(cardTitle);
+  if (document.getElementById("mySelect") && popup.classList.contains("show")) {
+    let selectContainer = document.getElementById("mySelect");
+    selectedValue = selectContainer.value;
+    selectContainer.onchange = function () {
+      selectedValue = selectContainer.value;
+    };
+    selection.push(selectedValue);
+  }
+  selectedValue = "N/C";
+  selection.push(selectedValue);
+  for (let i = iteration; i < Massive.length; i++) {
+    arr.push({
+      title: Massive[i],
+      option: selection[i],
+    });
+    iteration++;
+  }
+  const cartItems = {
+    title: arr.map((field) => field.title + " " + field.option).toString(),
+    totalPrice: priceCount,
+  };
+  localStorage.setItem("items", JSON.stringify(cartItems));
 
   btnDelete.classList.add("btn__delete");
   icon.classList.add("fas", "fa-times");
@@ -448,11 +493,4 @@ function addCart(card) {
   titleEmpty.style.display = "none";
   btnCheckout.style.display = "block";
   priceContainer.style.display = "flex";
-}
-
-function scrollItem() {
-  window.scrollTo({
-    top: 730,
-    behavior: "smooth",
-  });
 }
