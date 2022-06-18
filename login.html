@@ -21,7 +21,7 @@
 
     <body>
         <!-- HEADER -->
-        <header class="header">
+        <header>
             <nav>
                 <ul class="navbar">
                     <div class="header__logo">
@@ -43,41 +43,23 @@
             <div class="login__container">
                 <div class="login__inner">
                     <h2 class="login__title">Sign in</h2>
-                    <form class="login__form" action="" method="post">
-                        <label for="login">Email</label>
-                        <input type="email" name="" id="login" required>
-                        <label for="password">Password</label>
-                        <input type="password" name="" id="password" required>
+                    <form class="login__form">
+                        <div class="input__field">
+                            <input type="email" name="" id="login">
+                            <label for="login">Email</label>
+                            <span class="error-text">Login can't be empty</span>
+                        </div>
+                        <div class="input__field">
+                            <input type="password" name="" id="password">
+                            <label for="password">Password</label>
+                            <span class="error-text">Password can't be empty</span>
+                        </div>
                         <button class="btn__login" type="submit">Log in</button>
                     </form>
                     <div class="registration__container">
                         <h3 class="reg__suptitle">Don't have an account?</h3>
                         <a class="btn__reg">Create an account</a>
                     </div>
-                </div>
-                <div class="reg__inner">
-                    <h2 class="reg__title">Sing up</h2>
-                    <form class="reg__form" action="" method="post">
-                        <div class="main__info">
-                            <div class="first__name">
-                                <label for="name">First Name</label>
-                                <input type="text" name="" id="name" pattern="[A-Za-z]" required>
-                            </div>
-                            <div class="second__name">
-                                <label for="surname">Second name</label>
-                                <input type="text" name="" id="surname" pattern="[A-Za-z]" required>
-                            </div>
-                        </div>
-                        <div class="another__info">
-                            <label for="phone">Phone</label>
-                            <input type="tel" name="" id="phone" pattern="[0-9], {,6}" required>
-                            <label for="userEmail">Email</label>
-                            <input type="email" name="" id="userEmail" required>
-                            <label for="passwordReg">Password</label>
-                            <input type="password" name="" id="passwordReg" required>
-                        </div>
-                        <button class="btn__signup" type="submit">Sign up</button>
-                    </form>
                 </div>
             </div>
         </section>

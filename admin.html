@@ -21,7 +21,7 @@
 
     <body>
         <!-- HEADER -->
-        <header class="header">
+        <header>
             <nav>
                 <ul class="navbar">
                     <div class="header__logo">
@@ -40,6 +40,7 @@
             <div class="section__switcher">
                 <a class="order__switcher"><i class="far fa-user"></i> Orders</a>
                 <a class="create__card"><i class="fas fa-plus"></i> Create Card</a>
+                <a class="delete__card"><i class="fas fa-trash"></i> Delete card</a>
             </div>
             <div class="section__container">
                 <div class="order__container">
@@ -97,15 +98,15 @@
                 <div class="create-card__container">
                     <h2 class="create-card__title">Create Card</h2>
                     <div class="create-card__inner">
-                        <div class="create-card__photo">
-                            <div class="card__text">
-                                <i class="fas fa-upload"></i>
-                                <label for="card__photo">Перенесіть картинку <span>або</span>
-                                    натисніть на область</label>
-                            </div>
-                            <input class="input__photo" id="card__photo" type="file" required>
-                        </div>
                         <form class="create__form" action="" method="post">
+                            <div class="create-card__photo">
+                                <div class="card__text">
+                                    <i class="fas fa-upload"></i>
+                                    <label for="card__photo">Перенесіть картинку <span>або</span>
+                                        натисніть на область</label>
+                                </div>
+                                <input class="input__photo" id="card__photo" type="file" required>
+                            </div>
                             <div class="form__details">
                                 <h3 class="card__chapter">Card Details</h3>
                                 <div class="main__info">
@@ -131,7 +132,95 @@
                         </form>
                     </div>
                 </div>
-            </div>
+                <div class="delete__card-container">
+                    <h2 class="delete__card-title">Delete Card</h2>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="remove__button-container">
+                                <button class="btn__remove"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="rating rating_set">
+                                <div class="rating__body">
+                                    <div class="rating__active"></div>
+                                    <div class="rating__items">
+                                        <input type="radio" class="rating__item" value="1" name="rating">
+                                        <input type="radio" class="rating__item" value="2" name="rating">
+                                        <input type="radio" class="rating__item" value="3" name="rating">
+                                        <input type="radio" class="rating__item" value="4" name="rating">
+                                        <input type="radio" class="rating__item" value="5" name="rating">
+                                    </div>
+                                </div>
+                                <output class="rating__value">4.2</output>
+                            </div>
+                            <div class="card__img">
+                                <img src="assets/img/items/katana.png" alt="Katana">
+                            </div>
+                            <h1 class="card__title">Katana</h1>
+                            <h2 class="card__price">99$</h2>
+                        </div>
+
+                        <div class="card">
+                            <div class="rating rating_set">
+                                <div class="rating__body">
+                                    <div class="rating__active"></div>
+                                    <div class="rating__items">
+                                        <input type="radio" class="rating__item" value="1" name="rating">
+                                        <input type="radio" class="rating__item" value="2" name="rating">
+                                        <input type="radio" class="rating__item" value="3" name="rating">
+                                        <input type="radio" class="rating__item" value="4" name="rating">
+                                        <input type="radio" class="rating__item" value="5" name="rating">
+                                    </div>
+                                </div>
+                                <output class="rating__value">5</output>
+                            </div>
+                            <div class="card__img">
+                                <img src="assets/img/items/tea.png" alt="Puer Tea">
+                            </div>
+                            <h1 class="card__title">Puer Tea</h1>
+                            <h2 class="card__price">89$</h2>
+                        </div>
+                        <div class="card">
+                            <div class="rating rating_set">
+                                <div class="rating__body">
+                                    <div class="rating__active"></div>
+                                    <div class="rating__items">
+                                        <input type="radio" class="rating__item" value="1" name="rating">
+                                        <input type="radio" class="rating__item" value="2" name="rating">
+                                        <input type="radio" class="rating__item" value="3" name="rating">
+                                        <input type="radio" class="rating__item" value="4" name="rating">
+                                        <input type="radio" class="rating__item" value="5" name="rating">
+                                    </div>
+                                </div>
+                                <output class="rating__value">4</output>
+                            </div>
+                            <div class="card__img">
+                                <img src="assets/img/items/tea2.png" alt="Tea">
+                            </div>
+                            <h1 class="card__title">Tea</h1>
+                            <h2 class="card__price">29$</h2>
+                        </div>
+                        <div class="card">
+                            <div class="rating rating_set">
+                                <div class="rating__body">
+                                    <div class="rating__active"></div>
+                                    <div class="rating__items">
+                                        <input type="radio" class="rating__item" value="1" name="rating">
+                                        <input type="radio" class="rating__item" value="2" name="rating">
+                                        <input type="radio" class="rating__item" value="3" name="rating">
+                                        <input type="radio" class="rating__item" value="4" name="rating">
+                                        <input type="radio" class="rating__item" value="5" name="rating">
+                                    </div>
+                                </div>
+                                <output class="rating__value">4.8</output>
+                            </div>
+                            <div class="card__img">
+                                <img src="assets/img/items/samuraiCloth2.png" alt="Cloth">
+                            </div>
+                            <h1 class="card__title">Samurai Cloth</h1>
+                            <h2 class="card__price">129$</h2>
+                        </div>
+                    </div>
+                </div>
         </section>
         <script src="https://kit.fontawesome.com/c58ff47bab.js" crossorigin="anonymous"></script>
         <script src="assets/js/admin.js"></script>
