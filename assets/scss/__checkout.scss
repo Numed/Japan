@@ -1,0 +1,236 @@
+@mixin checkout {
+
+  header{
+    height: 100%;
+  }
+
+  section{
+    margin-top: 0;
+  }
+
+  
+  .section__chapter {
+    font-size: 24px;
+    font-weight: 600;
+    color: $nude;
+    text-align: center;
+    letter-spacing: 1.2px;
+  }
+  
+  .section__container {
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: $darkGray;
+    border-radius: 20px;
+  
+    label {
+      font-size: 16px;
+      font-weight: 400;
+      color: $nude;
+      letter-spacing: 1.1px;
+  
+      span {
+        padding: 0 5px;
+        font-size: 20px;
+        color: $raspberry;
+      }
+    }
+    .total__price {
+      color: $nude;
+    }
+  }
+  
+  .name__section, .contact__section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .name__section input, .contact__section input, .delivery__info input {
+    padding: 0 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: $nude;
+    letter-spacing: 1.2px;
+    background-color: #3f3f3f;
+    border-radius: 5px;
+    outline: none;
+
+    &.shake,
+    &.shake ~ label {
+      animation: shake .3s linear;
+    }
+  }
+  
+  .name__section input:focus, .contact__section input:focus {
+    border: 2px solid $raspberry;
+    transition: border .2s linear;
+  }
+
+  @keyframes shake {
+  
+    0%, 100%{
+      margin-left: 0;
+    }
+
+    20%, 80%{
+      margin-left: -12px;
+    }
+
+    40%, 60%{
+      margin-left: 12px;
+    }    
+  }
+  
+  .personal__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .delivery__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .delivery__title {
+    text-align: center;
+  }
+  
+  .delivery__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .delivery__info select {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    color: $nude;
+    text-align: center;
+    background: $darkGray;
+    max-width: 300px;
+    outline: none;
+  }
+
+  .autocomplete-items{
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    padding: 5px;
+    background-color: $nude;
+    max-height: 150px;
+    overflow-y: scroll;
+  }
+  
+  .payment__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+    color: $nude;
+  }
+  
+  .payment__title, .delivery__title {
+    font-size: 23px;
+    font-weight: 600;
+    color: $nude;
+    letter-spacing: 1.2px;
+  }
+  
+  .method__inner {
+    display: flex;
+    align-items: center;
+  
+    span {
+      padding-left: 5px;
+    }
+  }
+  
+  .payment__container input[type="radio"] {
+    width: 24px;
+    height: 24px;
+    border: 2px solid $nude;
+    border-radius: 15px;
+    -webkit-appearance: none;
+    appearance: none;
+  
+    &:checked {
+      background-color: $raspberry;
+      transition: background-color .2s linear;
+    }
+  }
+  
+  .submit__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .btn__submit {
+      padding: 8px 30px;
+      border-radius: 20px;
+    }
+  }
+
+  .popup__message{
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .popup__message.show {
+    transition: all .2s linear;
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(47,47,47,.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .message__container {
+    background-color: $nude;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: $raspberry;
+    padding: 60px;
+    
+
+    i{
+      color: $darkGray;
+      transform: scale(1.2);
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+  }
+  .message__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: 1.2px;
+  }
+
+  .message__suptitle {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 24px;
+  }
+  
+}

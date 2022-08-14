@@ -1,0 +1,119 @@
+@mixin contacts {
+  .contacts__container {
+    position: relative;
+  }
+
+  .container__map{
+    max-height: 340px;
+    min-height: 340px;
+    width: 100%;
+    overflow: hidden;
+
+    .conctact__map {
+      max-height: 600px;
+      min-height: 600px;
+      margin-top: -150px;
+      width: 100%;
+    }
+
+  }
+  
+  .conctact__inner {
+    position: absolute;
+    top: -35px;
+    left: 50px;
+    padding: 15px;
+    background: $darkGray;
+    border: 15px solid #3f3f3f;
+  }
+  
+  .form__title {
+    margin: 15px 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    color: $raspberry;
+    text-align: center;
+  }
+  
+  .conctact__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    input, textarea, input[type="email"]{
+      margin-bottom: 15px;
+      letter-spacing: 1.2px;
+      color: $nude;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid $raspberry;
+      outline: none;
+    }
+
+    input[type="email"]:focus{
+      border: none;
+      border-bottom: 2px solid #c81e45;
+    }
+
+    textarea{
+      border-bottom: none;
+    }
+  
+    input {
+      padding: 8px 0;
+    }
+  
+    textarea {
+      padding: 8px 15px;
+      width: 250px;
+      height: 200px;
+      color: $darkGray;
+      background: $nude;
+    }
+  }
+  
+  .btn__submit {
+    padding: 5px 15px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $raspberry;
+    text-align: center;
+    letter-spacing: 1.3px;
+    cursor: pointer;
+    background-color: $nude;
+  }
+  
+  .social {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    margin: 15px auto 0;
+    list-style: none;
+  
+    li {
+      width: 32px;
+      height: 32px;
+      background: $raspberry;
+      border-radius: 50%;
+    }
+  }
+  
+  .facebook, .twitter, .instagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: $nude;
+    text-decoration: none;
+  }
+  
+  .facebook:hover, .twitter:hover, .instagram:hover {
+    color: #ffffff;
+    transition: color .2s linear;
+  }
+}
