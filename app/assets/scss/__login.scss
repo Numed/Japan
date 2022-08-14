@@ -1,0 +1,195 @@
+@mixin login {
+
+  .login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    min-height: 500px;
+    background-color: $darkGray;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 0px 5px 15px 4px rgba(34,34,34,0.5);
+  }
+
+  .login__title,
+  .reg__title{
+    color: $raspberry;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    line-height: 28px;
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .login__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .login__img{
+    display: flex;
+  }
+
+  .input__field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 20px;
+
+    &:nth-child(2){
+      margin-top: 15px;
+    }
+
+  }
+
+  .error-text{
+    display: none;
+    color: $raspberry;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    margin-top: 5px;
+
+    &.visible{
+      display: inline;
+    }
+
+  }
+
+
+  .login__form,
+  .reg__form{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    label{
+      color: $raspberry;
+      position: absolute;
+      top: 10%;
+      left: 10px;
+      z-index: 10;
+    }
+    }
+
+  input[type="email"],
+  input[type="password"]{
+    min-height: 40px;
+    min-width: 245px;
+    border: 1px solid $darkGray;
+    background-color: $nude;
+    position: relative;
+    padding: 5px;
+    color: $darkGray;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+
+     &:focus{
+      border: 2px solid $raspberry;
+    
+      &:focus + label {
+      transform: translate(-10px, -35px);
+      transition: all .15s ease-in-out;
+      }  
+    }
+    
+    &.shake,
+    &.shake ~ label {
+      animation: shake .3s linear;
+    }
+  }
+
+  @keyframes shake {
+
+    0%, 100%{
+      margin-left: 0;
+    }
+
+    20%, 80%{
+      margin-left: -12px;
+    }
+
+    40%, 60%{
+      margin-left: 12px;
+    }    
+  }
+
+  .btn__login,
+  .btn__signup{
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: $nude;
+    padding: 6px 20px;
+    color: $raspberry;
+    cursor: pointer;
+  }
+
+  .registration__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .reg__suptitle {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: $nude;
+  }
+
+  .btn__reg {
+    margin: 0 auto;
+    color: $raspberry;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+  }
+
+  .reg__inner{
+  display: none;
+  }
+
+  .reg__inner.show{
+    display: block;
+  }
+
+  .reg__title{
+    text-align: center;
+  }
+
+  .main__info{
+    display: flex;
+
+    input{
+      width: 85%;
+    }
+
+  }
+
+  .another__info{
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+  }
+
+  .first__name,
+  .second__name{
+    display: flex;
+    flex-direction: column;
+  }
+
+}

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="Інтернет-магазин, Японія, Самурай, Чай, купити катану,
+        Shop, Japan, Katana, Tea, Buy tea, Online-shop">
+        <meta name="description" content="Want to feel what it's like to be a real warrior?
+        Get new sensations that take you to the XVII century, and learn the power of samurai.">
+        <meta property="og:title" content="Numed">
+        <meta property="og:image"
+            content="https://i.pinimg.com/originals/70/70/ef/7070ef1931c6ec64652960edd09f469e.jpg">
+        <meta property="og:description" content="Want to feel what it's like to be a real warrior?
+        Get new sensations that take you to the XVII century, and learn the power of samurai.">
+        <title>Numed - Products</title>
+        <link rel="stylesheet" href="assets/css/app.min.css">
+        <link rel="shortcut icon" href="assets/img/favicon.png">
+    </head>
+
+    <body>
+        <div class="popup">
+            <header class="small-header">
+                <nav>
+                    <ul class="navbar">
+                        <div class="header__logo">
+                            <a href="index.html"><img src="assets/img/header/logo.png" alt="Logo"></a>
+                        </div>
+                        <div class="search__container">
+                            <input class="input__search" type="text" placeholder="what need to search?">
+                        </div>
+                        <button class="btn__cart">
+                            <p class="counter">0</p>
+                            <a class="btn__icon"><i class="fas fa-shopping-cart"></i></a>
+                            <div class="cart__container">
+                                <div class="cart__inner">
+                                    <div class="cart__info">
+                                        <a class="btn__back"><i class="fas fa-arrow-left"></i></a>
+                                        <h2 class="cart__title">Current Cart</h2>
+                                    </div>
+                                    <ul class="inner__items">
+                                        <h2 class="title__empty">The cart is empty</h2>
+                                    </ul>
+                                    <div class="price__container">
+                                        <h3 class="total__price">Total price: <span>0$</span></h3>
+                                        <a class="btn__checkout" href="#">Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </ul>
+                </nav>
+                <section class="products">
+                    <h1 class="section__title">Products</h1>
+                    <div class="sort">
+                        <div class="filter__icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <select class="select__container">
+                            <option value="popular">Popular</option>
+                            <option value="high to low">At highest to low</option>
+                            <option value="low to high">At low to highest</option>
+                        </select>
+                    </div>
+                    <div class="product__container">
+                        <div class="filter">
+                            <div class="filter__inner">
+                                <div class="filter__section">
+                                    <h3 class="filter__title">Items</h3>
+                                    <div class="filter__selection">
+                                        <div class="item__inner">
+                                            <input class="checkbox" type="checkbox" value="Tea"><a>Teas</a></input>
+                                        </div>
+                                        <div class="item__inner">
+                                            <input class="checkbox" type="checkbox" value="Cloth"><a>Clothes</a></input>
+                                        </div>
+                                        <div class="item__inner">
+                                            <input class="checkbox" type="checkbox"
+                                                value="Katana"><a>Katanas</a></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter__section">
+                                    <h3 class="filter__title">Price</h3>
+                                    <div class="filter__selection">
+                                        <div class="selection__inputs">
+                                            <div class="field">
+                                                <span>Min</span>
+                                                <input class="input__min" type="number" value="0" min="0" max="1000">
+                                            </div>
+                                            <div class="separator">-</div>
+                                            <div class="field">
+                                                <span>Max</span>
+                                                <input class="input__max" type="number" value="100" min="0" max="1000">
+                                            </div>
+                                        </div>
+                                        <div class="range">
+                                            <div class="progress"></div>
+                                        </div>
+                                        <div class="range__input">
+                                            <input class="range__min" type="range" min="0" max="1000" value="0">
+                                            <input class="range__max" type="range" min="0" max="1000" value="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item__content">
+                            <div class="cards">
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4.2</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/katana.png" alt="Katana">
+                                    </div>
+                                    <h1 class="card__title">Katana</h1>
+                                    <h2 class="card__price">99$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add" type="button">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">5</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/tea.png" alt="Puer Tea">
+                                    </div>
+                                    <h1 class="card__title">Puer Tea</h1>
+                                    <h2 class="card__price">89$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/tea2.png" alt="Tea">
+                                    </div>
+                                    <h1 class="card__title">Tea</h1>
+                                    <h2 class="card__price">29$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4.8</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/samuraiCloth2.png" alt="Cloth">
+                                    </div>
+                                    <h1 class="card__title">Samurai Cloth</h1>
+                                    <h2 class="card__price">129$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">5</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/tea.png" alt="Puer Tea">
+                                    </div>
+                                    <h1 class="card__title">Puer Tea</h1>
+                                    <h2 class="card__price">89$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/tea2.png" alt="Tea">
+                                    </div>
+                                    <h1 class="card__title">Tea</h1>
+                                    <h2 class="card__price">29$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4.8</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/samuraiCloth2.png" alt="Cloth">
+                                    </div>
+                                    <h1 class="card__title">Samurai Cloth</h1>
+                                    <h2 class="card__price">129$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">5</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/tea.png" alt="Puer Tea">
+                                    </div>
+                                    <h1 class="card__title">Puer Tea</h1>
+                                    <h2 class="card__price">89$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/tea2.png" alt="Tea">
+                                    </div>
+                                    <h1 class="card__title">Tea</h1>
+                                    <h2 class="card__price">29$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" class="rating__item" value="1" name="rating">
+                                                <input type="radio" class="rating__item" value="2" name="rating">
+                                                <input type="radio" class="rating__item" value="3" name="rating">
+                                                <input type="radio" class="rating__item" value="4" name="rating">
+                                                <input type="radio" class="rating__item" value="5" name="rating">
+                                            </div>
+                                        </div>
+                                        <output class="rating__value">4.8</output>
+                                    </div>
+                                    <div class="card__img">
+                                        <img src="assets/img/items/samuraiCloth2.png" alt="Cloth">
+                                    </div>
+                                    <h1 class="card__title">Samurai Cloth</h1>
+                                    <h2 class="card__price">129$</h2>
+                                    <div class="btns__inner">
+                                        <div class="btn__view">View more</div>
+                                        <button class="btn__add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn__load-more"><i class="fas fa-redo"></i>Load more</a>
+                        </div>
+                    </div>
+                </section>
+            </header>
+
+            <!-- POPUP -->
+            <section class="card__info">
+                <div class="section__nav">
+                    <nav class="navbar">
+                        <a class="btn__close"><i class="fas fa-arrow-left"></i></a>
+                        <h2 class="nav__title">Product</h2>
+                        <button class="btn__cart">
+                            <p class="counter">0</p>
+                            <a class="btn__icon"><i class="fas fa-shopping-cart"></i></a>
+                            <div class="cart__container">
+                                <div class="cart__inner">
+                                    <div class="cart__info">
+                                        <a class="btn__back"><i class="fas fa-arrow-left"></i></a>
+                                        <h2 class="cart__title">Current Cart</h2>
+                                    </div>
+                                    <ul class="inner__items">
+                                        <h2 class="title__empty">The cart is empty</h2>
+                                    </ul>
+                                    <a class="btn__checkout">Checkout</a>
+                                </div>
+                            </div>
+                        </button>
+                    </nav>
+                </div>
+                <hr>
+                <div class="card__container">
+                    <div class="card__img">
+                        <img src="assets/img/items/tea.png" alt="Tea">
+                    </div>
+                    <div class="card__buy">
+                        <div class="buy__inner">
+                            <div class="info__container">
+                                <h1 class="card__title">Tea</h1>
+                                <h2 class="card__price">29$</h2>
+                            </div>
+                            <div class="card__selection">
+                                <select class="select__container">
+                                    <option value="small">S - 200g</option>
+                                    <option value="medium">M - 400g</option>
+                                    <option value="large">L - 700g</option>
+                                </select>
+                            </div>
+                            <a class="btn__buy"><i class="fas fa-shopping-cart"></i>Add to Cart</a>
+                        </div>
+                        <div class="partners__container">
+                            <h3 class="company__title">Our Partners</h3>
+                            <div class="logo__companies">
+                                <a href="#"><img src="assets/img/popup/dhl.png" alt="DHL"></a>
+                                <a href="#"><img src="assets/img/popup/meest.png" alt="Meest"></a>
+                                <a href="#"><img src="assets/img/popup/nova-poshta.png" alt="Nova Poshta"></a>
+                                <a href="#"><img src="assets/img/popup/fedex.png" alt="FedEx"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="description__container">
+                    <h2 class="description__title">Tea Peur</h2>
+                    <p class="card__description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eius ipsam, natus corrupti
+                        mollitia quod nostrum sequi maiores velit necessitatibus corporis facere incidunt labore
+                        sapiente rem consequuntur sit doloremque minima? Corporis deserunt quas assumenda qui
+                        velit temporibus esse ipsum. Illo illum eos fugiat unde dolor libero ab eius sapiente,
+                        amet modi iste distinctio commodi consequuntur quam, nesciunt molestiae atque aliquid minima
+                        saepe dolores!
+                    </p>
+                </div>
+            </section>
+        </div>
+        <script src="https://kit.fontawesome.com/c58ff47bab.js" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js" defer></script>
+    </body>
+
+</html>
